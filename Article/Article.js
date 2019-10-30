@@ -163,8 +163,8 @@ function articleComponent(dataObject) {
 
 }
 
+
 data.map(item => {
-  
   let parentDiv = document.querySelector('.articles');
 
   parentDiv.appendChild(articleComponent(item));

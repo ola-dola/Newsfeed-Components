@@ -25,11 +25,47 @@ let menuItems = [
   Add those items to the <ul>
 
   Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
-
+  
   Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
-
+  
   Step 5: return the menu component.
 
   Step 6: add the menu component to the DOM.
   
-*/
+  */
+
+// Step 1: Write a function that will create a menu component as seen below:
+function menuCreator(items) {
+  const div = document.createElement('div');
+  div.classList.add('menu');
+  
+  const list = document.createElement('ul');
+  
+  //  Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
+  // Add those items to the < ul >
+
+  items.map(item => {
+    const listItem = document.createElement('li');
+    listItem.textContent = item;
+    list.appendChild(listItem);
+  });
+
+  div.appendChild(list);
+  
+  // Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
+  const menuButton = document.querySelector('.menu-button');
+
+  //  Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
+  menuButton.addEventListener('click', () => {
+    div.classList.toggle('menu--open');
+  });
+
+  //  Step 5: return the menu component.
+  return div;
+}
+
+//  Step 6: add the menu component to the DOM.
+const lambdaMenu = menuCreator(menuItems);
+
+const container = document.querySelector('body');
+container.appendChild(lambdaMenu);
