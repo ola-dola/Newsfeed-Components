@@ -133,13 +133,21 @@ function articleComponent(dataObject) {
   const p3 = document.createElement('p');
   p3.textContent = dataObject.thirdParagraph;
 
-
   const span = document.createElement('span');
   span.classList.add('expandButton');
-  span.classList.toggle('article-open');
+  span.textContent = 'Read more';
+
+  span.addEventListener('click', () => {
+    div.classList.toggle('article-open');
+  });
 
   div.append(title, date, p1, p2, p3, span);
 
   return div;
 
 }
+
+data.map(item => {
+  let parentDiv = document.querySelector('.articles');
+  parentDiv.appendChild(articleComponent(item));
+});
